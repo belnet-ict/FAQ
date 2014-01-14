@@ -764,6 +764,25 @@ sub _MaskNew {
         Data => {%Param},
     );
 
+    # Hide the upload button when the maximum number of attachments per article is reached
+    if ( scalar @{ $Param{Attachments} } >= 32 ) {
+        $Self->{LayoutObject}->Block(
+            Name => 'UploadButton',
+            Data => {
+                UploadButtonType => 'hidden',
+                LabelClass => 'LabelError',
+            },
+        );
+    } else {
+        $Self->{LayoutObject}->Block(
+            Name => 'UploadButton',
+            Data => {
+                UploadButtonType => 'file',
+                LabelClass => 'InvisibleText',
+            },
+        );
+    }
+
     # show attachments
     ATTACHMENT:
     for my $Attachment ( @{ $Param{Attachments} } ) {

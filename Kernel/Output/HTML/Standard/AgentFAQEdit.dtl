@@ -115,7 +115,10 @@ Core.Form.Validate.DisableValidation($('#AttachmentDelete$QData{"FileID"}').clos
                                 </li>
 <!-- dtl:block:Attachment -->
                                 <li>
-                                    <input name="FileUpload" id="FileUpload" type="file" size="40"/>
+<!-- dtl:block:UploadButton -->
+                            <input name="FileUpload" id="FileUpload" type="$QData{"UploadButtonType"}" size="40"/>
+                            <label class="$QData{"LabelClass"}">$Text{"Maximum number of attachments per article reached."}</label>
+<!-- dtl:block:UploadButton -->
                                     <input type="hidden" id="AttachmentUpload" name="AttachmentUpload" value="0" />
                                 </li>
                             </ul>
